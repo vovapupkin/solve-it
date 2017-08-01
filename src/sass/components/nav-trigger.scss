@@ -1,0 +1,61 @@
+.nav-trigger {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  i {
+    background-color: #fff;
+    border-radius: 2px;
+    display: block;
+    width: 100%;
+    height: 4px;
+  }
+  i:nth-child(1) {
+    @include animation(outT 0.8s backwards reverse);
+  }
+  i:nth-child(2) {
+    margin: 5px 0;
+    @include animation(outM 0.8s backwards reverse);
+  }
+  i:nth-child(3) {
+    @include animation(outBtm 0.8s backwards reverse);
+  }
+  &.active {
+    i:nth-child(1) {
+      @include animation(inT 0.8s forwards);
+    }
+    i:nth-child(2) {
+      @include animation(inM 0.8s forwards);
+    }
+    i:nth-child(3) {
+      @include animation(inBtm 0.8s forwards);
+    }
+  }
+}
+@include keyframes(inM) {
+  50%{transform:rotate(0deg);}
+  100%{transform:rotate(45deg);}
+}
+@include keyframes(outM) {
+  50%{transform:rotate(0deg);}
+  100%{transform:rotate(45deg);}
+}
+@include keyframes(inT) {
+  0%{transform: translateY(0px) rotate(0deg);}
+  50%{transform: translateY(9px) rotate(0deg);}
+  100%{transform: translateY(9px) rotate(135deg);}
+}
+@include keyframes(outT) {
+  0%{transform: translateY(0px) rotate(0deg);}
+  50%{transform: translateY(9px) rotate(0deg);}
+  100%{transform: translateY(9px) rotate(135deg);}
+}
+@include keyframes(inBtm) {
+  0%{transform: translateY(0px) rotate(0deg);}
+  50%{transform: translateY(-9px) rotate(0deg);}
+  100%{transform: translateY(-9px) rotate(135deg);}
+}
+@include keyframes(outBtm) {
+  0%{transform: translateY(0px) rotate(0deg);}
+  50%{transform: translateY(-9px) rotate(0deg);}
+  100%{transform: translateY(-9px) rotate(135deg);}
+}

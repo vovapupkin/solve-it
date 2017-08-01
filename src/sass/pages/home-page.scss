@@ -1,0 +1,16 @@
+@import '../base/common';
+
+.team  {
+  position: relative;
+  & > img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+  }
+  & > p {
+    width: 65%;
+    display: inline-block;
+  }
+}

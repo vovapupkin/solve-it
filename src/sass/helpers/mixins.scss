@@ -1,0 +1,44 @@
+@mixin font-styles($font-family: false, $size: false, $color: false, $weight: false,  $lh: false) {
+  @if $font-family { font-family: $font-family, Arial, sans-serif }
+  @if $size { font-size: $size; }
+  @if $color { color: $color; }
+  @if $weight { font-weight: $weight; }
+  @if $lh { line-height: $lh; }
+}
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation:    $animations;
+  -o-animation:      $animations;
+  animation:         $animations;
+}
+
+@mixin respond-to($media) {
+  @media only screen and #{$media} {
+    @content;
+  }
+}
