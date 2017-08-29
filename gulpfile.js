@@ -7,7 +7,8 @@ const browserify = require('browserify'),
     autoprefixer = require('gulp-autoprefixer'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    postcss = require('gulp-postcss');
 
 const entryPoint = './src/js/main.js',
     dirs = {
@@ -49,9 +50,6 @@ gulp.task('sass', function () {
   return gulp.src(sassDirs.src)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-        browsers: ['last 2 versions']
-    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(sassDirs.dest))
     .pipe(browserSync.reload({stream: true}));
